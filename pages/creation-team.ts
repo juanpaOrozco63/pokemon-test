@@ -30,22 +30,23 @@ export class CreationTeam {
     this.locatorPokemonInput = page.locator(this.inputNamePokemon);
     this.locatorValidateButtton = page.locator(this.inputButtonValidate);
   }
-  async selectFormatDropwDown(name: string, gen: string) {
+  async selectDropDown(name: string, type: string) {
     await this.locatorFormatDropDown.click();
-    await this.locatorFormatSearchInput.pressSequentially(name, { delay: 200 });
-    await this.page.locator(`button:has-text("${gen}")`).click();
+    await this.locatorFormatSearchInput.pressSequentially(name, { delay: 100 });
+    await this.page.locator(`button:has-text("${type}")`).click();
   }
   async addPokemon(name: string) {
     await this.locatorInputAddPokemon.click();
     await this.locatorPokemonInput.click();
-    await this.locatorPokemonInput.pressSequentially(name, { delay: 100 });
+    await this.locatorPokemonInput.pressSequentially(name, { delay: 50 });
     await this.page.locator(`a[data-entry="pokemon|${name}"]`).click();
   }
 
-  async validateTeam(name: string, gen: string) {
+  async validateSuccess(name: string, type: string) {
     await this.locatorValidateButtton.click();
     await expect(this.page.locator("body")).toContainText(
-      `Your team is valid for [${gen}] ${name}.`
+      `Your team is valid for [${type}] ${name}.`
     );
   }
+
 }

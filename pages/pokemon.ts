@@ -1,66 +1,73 @@
-import { expect, Locator, Page } from "@playwright/test";
+// PokemonDetailsPage.ts
+import { Page, Locator, expect } from "@playwright/test";
 
 export class Pokemon {
-    private readonly page: Page;
-    private readonly locatorItem: Locator;
-    private locatorMoves: {[key: string]: Locator};   
-    private locatorInputsEvs: {[key: string]: Locator}; 
-    private readonly locatorButtonBackTeam: Locator;
-    private readonly locatorTotalEvs: Locator;
-    private readonly locatorButtonStats: Locator;
+  //Pages
+  private readonly page: Page;
+  //Locators
+  readonly locatorItem: Locator;
+  readonly locatorAbility: Locator;
+  readonly locatorInputs: { [key: string]: Locator };
+  readonly locatorStats: Locator;
+  readonly locatorBackToTeam: Locator;
+  readonly locatorMoves: { [key: string]: Locator };
+  readonly locatorTotalEvs: Locator;
+  //Texts
+  private readonly nameButtonBuilder: string = "Teambuilder";
 
-    constructor(page:Page){
-        this.page = page;
-        this.locatorItem = page.locator('input[name="item"]');
-        this.createMoves();
-        this.createInputsEvs();
-        this.locatorButtonBackTeam = page.locator('button[name="back"]');
-    }
+  constructor(page: Page) {
+    this.page = page;
+    this.locatorItem = page.locator('input[name="item"]');
+    this.locatorAbility = page.locator('input[name="ability"]');
+    this.locatorMoves = {
+      move1: page.locator('input[name="move1"]'),
+      move2: page.locator('input[name="move2"]'),
+      move3: page.locator('input[name="move3"]'),
+      move4: page.locator('input[name="move4"]'),
+    };
+    this.locatorInputs = {
+      hp: page.locator('input[name="stat-hp"]'),
+      atk: page.locator('input[name="stat-atk"]'),
+      def: page.locator('input[name="stat-def"]'),
+      spa: page.locator('input[name="stat-spa"]'),
+      spd: page.locator('input[name="stat-spd"]'),
+      spe: page.locator('input[name="stat-spe"]'),
+    };
+    this.locatorStats = page.locator('button[name="stats"]');
+    this.locatorBackToTeam = page.locator('button[name="back"]');
+    this.locatorTotalEvs = page.locator("div.totalev em");
+  }
 
-    createMoves(){
-        this.locatorMoves = {
-            move1: this.page.locator('input[name="move1"]'),
-            move2: this.page.locator('input[name="move2"]'),
-            move3: this.page.locator('input[name="move3"]'),
-            move4: this.page.locator('input[name="move4"]'),
-        }
-    }
+  async selectItem(item: string) {
+    await this.locatorItem.click();
+    await this.locatorItem.pressSequentially(item);
+  }
 
-    createInputsEvs(){
-        this.locatorInputsEvs = {
-            hp: this.page.locator('input[name="evs.hp"]'),
-            atk: this.page.locator('input[name="evs.atk"]'),
-            def: this.page.locator('input[name="evs.def"]'),
-            spa: this.page.locator('input[name="evs.spa"]'),
-            spd: this.page.locator('input[name="evs.spd"]'),
-            spe: this.page.locator('input[name="evs.spe"]'),
-        }
-    }
+  async bttnBackToTeam() {
+    await this.locatorBackToTeam.click();
+  }
 
-    async selectItem(item: string){
-        await this.locatorItem.click();
-        await this.locatorItem.pressSequentially(item)
-    }
+  async selectAbility(ability: string) {
+    await this.locatorAbility.click();
+    await this.locatorAbility.pressSequentially(ability);
+  }
 
-    async selectMove(moves: string){
-        await Object.keys(this.locatorMoves).forEach((key, index) => {
-            this.locatorMoves[key].fill(moves[index]);
-        });
+  async stats(stats: { [key: string]: string }) {
+    await this.locatorStats.click();
+    for (const [stat, value] of Object.entries(stats)) {
+      await this.locatorInputs[stat].pressSequentially(value, { delay: 100 });
     }
+  }
 
-    async selectEvs(evStats: { [key: string]: string }){
-        await this.locatorButtonStats.click();
-        for (const [stat, value] of Object.entries(evStats)) {
-            await this.locatorInputsEvs[stat].pressSequentially(value, { delay: 100 });
-        }
-    }
+  async verifyEvsEqualToCero() {
+    await expect(this.locatorTotalEvs).toContainText("0");
+  }
 
-    async validateTotalEvs(totalEvs: string){
-        await expect(this.locatorTotalEvs).toContainText('0');
+  async moves(moves: { [key: string]: string }) {
+    for (const [move, value] of Object.entries(moves)) {
+      await this.locatorMoves[move].pressSequentially(value, { delay: 100 });
     }
-    
-    async backToTeam(){
-        await this.locatorButtonBackTeam.click();
-    }
+  }
 
+  
 }

@@ -3,8 +3,11 @@ import { Locator, Page } from "@playwright/test";
 
 
 export class NewTeam {
+    //Pages
     private readonly page: Page;
+    //Locators
     private readonly locatorNewTeam: Locator;
+    //Texts
     private readonly nameButtonTeam: string = "New Team";
 
     constructor(page:Page) {

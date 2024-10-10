@@ -1,0 +1,127 @@
+{
+    "format": "Ubers",
+    "tipo": "Gen 5",
+    "pokemon": [
+        {
+            "name": "Pikachu",
+            "item": "Light Ball",
+            "ability": "Static",
+            "moves": {
+                "move1": "Agility",
+                "move2": "Body Slam",
+                "move3": "Brick Break",
+                "move4": "Discharge"
+            },
+            "ivSpread": "31/31/31/31/31/31",
+            "evStats": {
+                "hp": "252",
+                "atk": "252",
+                "def": "4",
+                "spa": "0",
+                "spd": "0",
+                "spe": "0"
+            }
+        },
+        {
+            "name": "Charmander",
+            "item": "Choice Band",
+            "ability": "Blaze",
+            "moves": {
+                "move1": "Fire Blast",
+                "move2": "Double-Edge",
+                "move3": "Facade",
+                "move4": "Brick Break"
+            },
+            "ivSpread": "31/31/31/31/31/31",
+            "evStats": {
+                "hp": "0",
+                "atk": "0",
+                "def": "0",
+                "spa": "252",
+                "spd": "4",
+                "spe": "252"
+            }
+        },
+        {
+            "name": "Squirtle",
+            "item": "Power Herb",
+            "ability": "Torrent",
+            "moves": {
+                "move1": "Facade",
+                "move2": "Dive",
+                "move3": "Brick Break",
+                "move4": "Blizzard"
+            },
+            "ivSpread": "31/31/31/31/31/31",
+            "evStats": {
+                "hp": "252",
+                "atk": "144",
+                "def": "0",
+                "spa": "104",
+                "spd": "0",
+                "spe": "8"
+            }
+        },
+        {
+            "name": "Charizard",
+            "item": "Life Orb",
+            "ability": "Blaze",
+            "moves": {
+                "move1": "Crunch",
+                "move2": "Ancient Power",
+                "move3": "Dragon Claw",
+                "move4": "Fire Fang"
+            },
+            "ivSpread": "31/31/31/31/31/31",
+            "evStats": {
+                "hp": "0",
+                "atk": "0",
+                "def": "252",
+                "spa": "252",
+                "spd": "0",
+                "spe": "4"
+            }
+        },
+        {
+            "name": "Celebi",
+            "item": "Lum Berry",
+            "ability": "Natural Cure",
+            "moves": {
+                "move1": "Giga Drain",
+                "move2": "Energy Ball",
+                "move3": "Baton Pass",
+                "move4": "Calm Mind"
+            },
+            "ivSpread": "31/31/31/31/31/31",
+            "evStats": {
+                "hp": "32",
+                "atk": "48",
+                "def": "52",
+                "spa": "32",
+                "spd": "92",
+                "spe": "252"
+            }
+        },
+        {
+            "name": "Arceus",
+            "item": "Choice Band",
+            "ability": "Multitype",
+            "moves": {
+                "move1": "Aqua Tail",
+                "move2": "Blizzard",
+                "move3": "Dark Pulse",
+                "move4": "Draco Meteor"
+            },
+            "ivSpread": "31/31/31/31/31/31",
+            "evStats": {
+                "hp": "20",
+                "atk": "252",
+                "def": "236",
+                "spa": "0",
+                "spd": "0",
+                "spe": "0"
+            }
+        }
+    ],
+    "expectedValidationMessage": "Your team is valid for [Gen 5] Ubers."
+}

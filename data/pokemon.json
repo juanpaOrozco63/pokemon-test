@@ -1,0 +1,26 @@
+{
+    "format": "Ubers",
+    "tipo": "Gen 5",
+    "pokemon": 
+        {
+            "name": "Pikachu",
+            "item": "Light Ball",
+            "ability": "Static",
+            "moves": {
+                "move1": "Agility",
+                "move2": "Body Slam",
+                "move3": "Brick Break",
+                "move4": "Discharge"
+            },
+            "ivSpread": "31/31/31/31/31/31",
+            "evStats": {
+                "hp": "252",
+                "atk": "252",
+                "def": "4",
+                "spa": "0",
+                "spd": "0",
+                "spe": "0"
+            }
+        }
+    
+}
